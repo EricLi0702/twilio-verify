@@ -15,20 +15,14 @@
                 Main  Section  START
         =======================================-->
         <div class="main-section">
-            <form action="/" method="POST">
-                @csrf
-                <h2 class="p-10">  Phone number verification  </h2>
-                <p class="p-10 fw-12">Verifying your number. Requirements. You can only verify a phone number you own.</p>
-                <div class="input-group pt-5">
-                    <div class="input-group-prepend">
-                    <span class="input-group-text">+38</span>
-                    </div>
-                    <input type="phone" id="phone_number" name="phone_number" class="form-control" placeholder="Enter your phone number">
-                </div>
-                <div class="btn-con pt-10">
-                    <button type="submit" class="w-100">Send SMS with code</button>
-                </div>
-            </form>
+            <h2 class="p-10">  Verification code  </h2>
+            <p class="p-10 fw-12">Enter the 6-digit verification code that you received and click Verify</p>
+            <div class="input-group pt-5">
+                <input type="phone" id="phone" class="form-control" placeholder="6-digit verification code">
+            </div>
+            <div class="btn-con pt-10">
+                <button class="w-100">Verify</button>
+            </div>
             <div class="copyright-con">
                 <p class="fw-12"> &copy; 2021 </p> 
             </div>
