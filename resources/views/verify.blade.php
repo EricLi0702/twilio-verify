@@ -15,16 +15,13 @@
                 Main  Section  START
         =======================================-->
         <div class="main-section">
-            <h2 class="p-10">  Phone number verification  </h2>
-            <p class="p-10 fw-12">Verifying your number. Requirements. You can only verify a phone number you own.</p>
+            <h2 class="p-10">  Verification code  </h2>
+            <p class="p-10 fw-12">Enter the 6-digit verification code that you received and click Verify</p>
             <div class="input-group pt-5">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">+38</span>
-                </div>
-                <input type="phone" id="phone" class="form-control" placeholder="Enter your phone number">
+                <input type="phone" id="phone" class="form-control" placeholder="6-digit verification code">
             </div>
             <div class="btn-con pt-10">
-                <button class="w-100">Send SMS with code</button>
+                <button class="w-100">Verify</button>
             </div>
             <div class="copyright-con">
                 <p class="fw-12"> &copy; 2021 </p> 
