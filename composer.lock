@@ -3759,10 +3759,13 @@
                 "sms",
                 "twilio"
             ],
+<<<<<<< HEAD
             "support": {
                 "issues": "https://github.com/twilio/twilio-php/issues",
                 "source": "https://github.com/twilio/twilio-php/tree/6.16.0"
             },
+=======
+>>>>>>> 9cf957650658d441b9bd5f565a0411b5eee9a096
             "time": "2021-01-13T22:45:35+00:00"
         },
         {

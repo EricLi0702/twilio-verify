@@ -1,100 +1,50 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
+        <!-- Title -->
+        <title>Verify your phone number</title>
+        <!-- include ICON -->
+        <link rel="icon" type="image/png" href="{{ asset('asset/images/favicon.png') }}" sizes="16x16">
+        <!-- include Bootstrap CSS -->
+        {{-- <link rel="stylesheet" href="{{ asset('asset/css/bootstrap.min.css') }}"> --}}
+        <!-- include Custom CSS -->
+        <link rel="stylesheet" href="{{ asset('asset/css/style.css') }}">
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+        <!--=====================================
+                Main  Section  START
+        =======================================-->
+        <div class="main-section">
+            <form action="/" method="POST">
+                @csrf
+                <h2 class="p-10">  Phone number verification  </h2>
+                <p class="p-10 fw-12">Verifying your number. Requirements. You can only verify a phone number you own.</p>
+                <div class="input-group pt-5">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text">+38</span>
+                    </div>
+                    <input type="phone" id="phone_number" name="phone_number" class="form-control" placeholder="Enter your phone number">
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+                <div class="btn-con pt-10">
+                    <button type="submit" class="w-100">Send SMS with code</button>
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+            </form>
+            <div class="copyright-con">
+                <p class="fw-12"> &copy; 2021 </p> 
             </div>
         </div>
+        <!--=====================================
+                Main  Section  START
+        =======================================-->
+
+
+        <!-- jquery -->
+        <script src="{{ asset('asset/js/jquery-3.5.1.min.js')}}"></script>
+        <!-- bootstrap bundle js -->
+        {{-- <script src="{{ asset('asset/js/bootstrap.bundle.min.js') }}"></script> --}}
+        <!-- custom js -->
+        <script src="{{ asset('asset/js/custom.js') }}"></script>
     </body>
 </html>
