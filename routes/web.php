@@ -15,22 +15,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-<<<<<<< HEAD
-})->name('register');
+})->name('login');
 
-Route::get('/verify', function () {
-    return view('auth.verify');
-})->name('verify');
 
 Route::get('/home', function () {
     return view('home');
-})->name('home');
+})->name('home')->middleware('auth');
 
 Route::post('/', 'AuthController@create')->name('register');
 Route::post('/verify', 'AuthController@verify')->name('verify');
-=======
-});
 Route::get('/verify', function () {
     return view('verify');
 });
->>>>>>> 549ae26b94a29def8c9e416aa83518aff55ed8c2

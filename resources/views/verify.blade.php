@@ -15,14 +15,26 @@
                 Main  Section  START
         =======================================-->
         <div class="main-section">
-            <h2 class="p-10">  Verification code  </h2>
-            <p class="p-10 fw-12">Enter the 6-digit verification code that you received and click Verify</p>
-            <div class="input-group pt-5">
-                <input type="phone" id="phone" class="form-control" placeholder="6-digit verification code">
-            </div>
-            <div class="btn-con pt-10">
-                <button class="w-100">Verify</button>
-            </div>
+            <form action="/verify" method="POST">
+                @csrf
+                <h2 class="p-10">  Verification code  </h2>{{session('phone_number')}}
+                <p class="p-10 fw-12">Enter the 6-digit verification code that you received and click Verify</p>
+                <div class="input-group pt-5">
+                    <input type="hidden" id="phone_number" name="phone_number" value="{{session('phone_number')}}">
+                    <input type="phone" id="verification_code" name="verification_code" class="form-control" placeholder="6-digit verification code">
+                </div>
+                @error('verification_code')
+                   <span class="invalid-feedback" role="alert">
+                       <strong>{{ $message }}</strong>
+                   </span>
+                @enderror
+                @if(session('error'))
+                    <div class="error pt-10 text-danger">{{ session('error') }}</div>
+                @endif
+                <div class="btn-con pt-10">
+                    <button type="submit" class="w-100">Verify</button>
+                </div>
+            </form>
             <div class="copyright-con">
                 <p class="fw-12"> &copy; 2021 </p> 
             </div>

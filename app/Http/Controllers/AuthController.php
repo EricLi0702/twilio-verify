@@ -19,15 +19,18 @@ class AuthController extends Controller
         $twilio_sid = getenv("TWILIO_SID");
         $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
         $twilio = new Client($twilio_sid, $token);
-        $phoneNumber="+79963834420";
-        $data['phone_number'] = $phoneNumber;
-        $twilio->verify->v2->services($twilio_verify_sid)
-            ->verifications
-            ->create($data['phone_number'], "sms");
+        $data['phone_number'] = '+38'.$data['phone_number'];
+        try{
+            $twilio->verify->v2->services($twilio_verify_sid)
+                ->verifications
+                ->create($data['phone_number'], "sms");
+        }
+         catch (Throwable $e) {
+             return;
+            // return back()->with(['phone_number' => $data['phone_number'], 'error' => 'Invalid verification code entered!']);
+        }
         User::create([
-            // 'name' => $data['name'],
-            'phone_number' => $data['phone_number'],
-            // 'password' => Hash::make($data['password']),
+            'phone_number' => substr($data['phone_number'],3),
         ]);
         return redirect()->route('verify')->with(['phone_number' => $data['phone_number']]);
     }
@@ -50,7 +53,7 @@ class AuthController extends Controller
             $user = tap(User::where('phone_number', $data['phone_number']))->update(['isVerified' => true]);
             /* Authenticate user */
             Auth::login($user->first());
-            return redirect()->route('home')->with(['message' => 'Phone number verified']);
+            return redirect()->route('home')->with(['phone_number' => $data['phone_number'],'message' => 'Phone number verified']);
         }
         return back()->with(['phone_number' => $data['phone_number'], 'error' => 'Invalid verification code entered!']);
     }
